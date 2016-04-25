@@ -49,6 +49,12 @@ bot.addListener('message', function(from, to, text) {
   }
 });
 
+bot.addListener('message', function(from, to, text) {
+  if (text.indexOf("slice you".toLowerCase()) > -1) {
+    bot.say(channel, "SLICE YOU UP!");
+  }
+});
+
 bot.addListener('error', function(message) {
   console.log('error: ', message);
 });
