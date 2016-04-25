@@ -1,0 +1,18 @@
+{
+  "name": "ifgc-stream-monster-bot",
+  "version": "1.0.0",
+  "description": "IRC Bot for #IrishFightingGames community, listing the current top 5 streams on twitch.tv for the specified game",
+  "main": "bot.js",
+  "dependencies": {
+    "irc": "^0.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^2.8.0",
+    "eslint-config-google": "^0.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Szymon Kazmierczak",
+  "license": "ISC"
+}
