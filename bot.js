@@ -16,37 +16,50 @@ bot.connect(5, function() {
 // list top 5 streams
 bot.addListener('message', function(from, to, text) {
   console.log(from + ' => ' + to + ': ' + text);
-  if (text.indexOf("whens".toLowerCase()) > -1) {
+  if ((text.indexOf("whens".toLowerCase()) > -1) ||
+  (text.indexOf("when's".toLowerCase()) > -1)) {
     if (text.indexOf("sf".toLowerCase()) > -1) {
       data("sf", function(streams) {
         var streamsLength = streams.length;
-        console.log("Stream count: " + streamsLength);
-        var concatString = '';
-        for (var i = 0; i < streamsLength; i++) {
-          concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+        if (streamsLength === 0) {
+          bot.say(channel, "No streams, RIP SFV");
+        } else {
+          console.log("Stream count: " + streamsLength);
+          var concatString = '';
+          for (var i = 0; i < streamsLength; i++) {
+            concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+          }
+          bot.say(channel, "Top SFV Streams - " + concatString);
         }
-        bot.say(channel, "Top SFV Streams - " + concatString);
       });
     } else if (text.indexOf("gg".toLowerCase()) > -1) {
       data("gg", function(streams) {
         var streamsLength = streams.length;
-        console.log("Stream count: " + streamsLength);
-        var concatString = '';
-        for (var i = 0; i < streamsLength; i++) {
-          concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+        if (streamsLength === 0) {
+          bot.say(channel, "No streams, RIP GG Xrd");
+        } else {
+          console.log("Stream count: " + streamsLength);
+          var concatString = '';
+          for (var i = 0; i < streamsLength; i++) {
+            concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+          }
+          bot.say(channel, "Top GG:Xrd Streams - " + concatString);
         }
-        bot.say(channel, "Top GG:Xrd Streams - " + concatString);
       });
     } else if ((text.indexOf("marvel".toLowerCase()) > -1) ||
     (text.indexOf("mahvel".toLowerCase()) > -1)) {
       data("marvel", function(streams) {
         var streamsLength = streams.length;
-        console.log("Stream count: " + streamsLength);
-        var concatString = '';
-        for (var i = 0; i < streamsLength; i++) {
-          concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+        if (streamsLength === 0) {
+          bot.say(channel, "No streams, RIP Mahvel");
+        } else {
+          console.log("Stream count: " + streamsLength);
+          var concatString = '';
+          for (var i = 0; i < streamsLength; i++) {
+            concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+          }
+          bot.say(channel, "Top Marvel Streams - " + concatString);
         }
-        bot.say(channel, "Top Marvel Streams - " + concatString);
       });
     } else if (text.indexOf("tekken".toLowerCase()) > -1) {
       bot.say(channel, "Real fgs only plz");
