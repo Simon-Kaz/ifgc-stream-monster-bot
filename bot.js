@@ -68,8 +68,10 @@ bot.addListener('message', function(from, to, text) {
 });
 
 bot.addListener('message', function(from, to, text) {
-  if (text.indexOf("birdie is an honest char".toLowerCase()) > -1) {
-    bot.say(channel, "Birdie is the most honest of chars");
+  if (text.indexOf("birdie".toLowerCase()) > -1) {
+    if ((text.indexOf("honest".toLowerCase()) > -1) || (text.indexOf("retarded".toLowerCase()) > -1)) {
+      bot.say(channel, "Birdie is the most honest char.");
+    }
   }
 });
 
