@@ -81,7 +81,7 @@ function data(game, callback) {
   } else if (game === "gg".toLowerCase()) {
     url = "https://api.twitch.tv/kraken/streams?game=Guilty%20Gear%20Xrd%20-Revelator-&limit=5";
   } else if (game === "marvel".toLowerCase()) {
-    url = "https://www.twitch.tv/directory/game/Ultimate%20Marvel%20vs.%20Capcom%203&limit=5";
+    url = "https://api.twitch.tv/kraken/streams?game=Ultimate%20Marvel%20vs.%20Capcom%203&limit=5";
   }
 
   https.get(url, function(response) {
