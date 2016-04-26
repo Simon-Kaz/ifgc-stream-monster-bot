@@ -37,6 +37,17 @@ bot.addListener('message', function(from, to, text) {
         }
         bot.say(channel, "Top GG:Xrd Streams - " + concatString);
       });
+    } else if ((text.indexOf("marvel".toLowerCase()) > -1) ||
+    (text.indexOf("mahvel".toLowerCase()) > -1)) {
+      data("marvel", function(streams) {
+        var streamsLength = streams.length;
+        console.log("Stream count: " + streamsLength);
+        var concatString = '';
+        for (var i = 0; i < streamsLength; i++) {
+          concatString += (streams[i].channel.url + " [" + streams[i].viewers + "] ");
+        }
+        bot.say(channel, "Top Marvel Streams - " + concatString);
+      });
     } else if (text.indexOf("tekken".toLowerCase()) > -1) {
       bot.say(channel, "Real fgs only plz");
     }
@@ -69,6 +80,8 @@ function data(game, callback) {
     url = "https://api.twitch.tv/kraken/streams?game=Street%20Fighter%20V&limit=5";
   } else if (game === "gg".toLowerCase()) {
     url = "https://api.twitch.tv/kraken/streams?game=Guilty%20Gear%20Xrd%20-Revelator-&limit=5";
+  } else if (game === "marvel".toLowerCase()) {
+    url = "https://www.twitch.tv/directory/game/Ultimate%20Marvel%20vs.%20Capcom%203&limit=5";
   }
 
   https.get(url, function(response) {
