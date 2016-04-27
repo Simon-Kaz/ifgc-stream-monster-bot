@@ -16,7 +16,7 @@ bot.connect(5, function() {
 // list top 5 streams
 bot.addListener('message', function(from, to, text) {
   console.log(from + ' => ' + to + ': ' + text);
-  if ((text.indexOf("whens".toLowerCase()) > -1) ||
+  if ((text.toLowerCase().indexOf("whens") > -1) ||
   (text.indexOf("when's".toLowerCase()) > -1)) {
     if (text.indexOf("sf".toLowerCase()) > -1) {
       data("sf", function(streams) {
