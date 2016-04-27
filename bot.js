@@ -17,8 +17,8 @@ bot.connect(5, function() {
 bot.addListener('message', function(from, to, text) {
   console.log(from + ' => ' + to + ': ' + text);
   if ((text.toLowerCase().indexOf("whens") > -1) ||
-  (text.indexOf("when's".toLowerCase()) > -1)) {
-    if (text.indexOf("sf".toLowerCase()) > -1) {
+  (text.toLowerCase().indexOf("when's") > -1)) {
+    if (text.toLowerCase().indexOf("sf") > -1) {
       data("sf", function(streams) {
         var streamsLength = streams.length;
         if (streamsLength === 0) {
@@ -32,7 +32,7 @@ bot.addListener('message', function(from, to, text) {
           bot.say(channel, "Top SFV Streams - " + concatString);
         }
       });
-    } else if (text.indexOf("gg".toLowerCase()) > -1) {
+    } else if (text.toLowerCase().indexOf("gg") > -1) {
       data("gg", function(streams) {
         var streamsLength = streams.length;
         if (streamsLength === 0) {
@@ -46,7 +46,7 @@ bot.addListener('message', function(from, to, text) {
           bot.say(channel, "Top GG:Xrd Streams - " + concatString);
         }
       });
-    } else if ((text.indexOf("marvel".toLowerCase()) > -1) ||
+    } else if ((text.toLowerCase().indexOf("marvel") > -1) ||
     (text.indexOf("mahvel".toLowerCase()) > -1)) {
       data("marvel", function(streams) {
         var streamsLength = streams.length;
@@ -61,22 +61,22 @@ bot.addListener('message', function(from, to, text) {
           bot.say(channel, "Top Marvel Streams - " + concatString);
         }
       });
-    } else if (text.indexOf("tekken".toLowerCase()) > -1) {
+    } else if (text.toLowerCase().indexOf("tekken") > -1) {
       bot.say(channel, "Real fgs only plz");
     }
   }
 });
 
 bot.addListener('message', function(from, to, text) {
-  if (text.indexOf("birdie".toLowerCase()) > -1) {
-    if ((text.indexOf("honest".toLowerCase()) > -1) || (text.indexOf("retarded".toLowerCase()) > -1)) {
+  if (text.toLowerCase().indexOf("birdie") > -1) {
+    if ((text.toLowerCase().indexOf("honest") > -1) || (text.toLowerCase().indexOf("retarded") > -1)) {
       bot.say(channel, "Birdie is the most honest char.");
     }
   }
 });
 
 bot.addListener('message', function(from, to, text) {
-  if (text.indexOf("slice you".toLowerCase()) > -1) {
+  if (text.toLowerCase().indexOf("slice you") > -1) {
     bot.say(channel, "SLICE YOU UP!");
   }
 });
@@ -91,11 +91,11 @@ bot.addListener('error', function(message) {
  */
 function data(game, callback) {
   var url;
-  if (game === "sf".toLowerCase()) {
+  if (game.toLowerCase() === "sf") {
     url = "https://api.twitch.tv/kraken/streams?game=Street%20Fighter%20V&limit=5";
-  } else if (game === "gg".toLowerCase()) {
+  } else if (game.toLowerCase() === "gg") {
     url = "https://api.twitch.tv/kraken/streams?game=Guilty%20Gear%20Xrd%20-Revelator-&limit=5";
-  } else if (game === "marvel".toLowerCase()) {
+  } else if (game.toLowerCase() === "marvel") {
     url = "https://api.twitch.tv/kraken/streams?game=Ultimate%20Marvel%20vs.%20Capcom%203&limit=5";
   }
 
