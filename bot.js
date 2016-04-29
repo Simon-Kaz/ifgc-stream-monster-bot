@@ -2,18 +2,20 @@ var irc = require('irc');
 var https = require("https");
 
 var channel = "#IrishFightingGames";
+var server = "servercentral.il.us.quakenet.org";
+var botName = "StreamMonster";
 
 console.log("Setting up client");
-var bot = new irc.Client("servercentral.il.us.quakenet.org", "StreamMonster", {autoConnect: false});
+var bot = new irc.Client(server, botName, {autoConnect: false});
 
 bot.connect(5, function() {
   console.log("Connected!");
   bot.join(channel, function() {
-    console.log("Joined playground");
+    console.log("Joined " + channel);
   });
 });
 
-// list top 5 streams
+// list top 5 streams for specified game
 bot.addListener('message', function(from, to, text) {
   console.log(from + ' => ' + to + ': ' + text);
   if ((text.toLowerCase().indexOf("whens") > -1) ||
@@ -78,6 +80,14 @@ bot.addListener('message', function(from, to, text) {
 bot.addListener('message', function(from, to, text) {
   if (text.toLowerCase().indexOf("slice you") > -1) {
     bot.say(channel, "SLICE YOU UP!");
+  }
+});
+
+bot.addListener('message', function(from, to, text) {
+  if (text.toLowerCase().indexOf("fuck") > -1) {
+    if (text.toLowerCase().indexOf("this") > -1) {
+      bot.say(channel, "(╯°□°）╯︵ ┻━┻");
+    }
   }
 });
 
